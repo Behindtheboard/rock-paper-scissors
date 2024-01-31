@@ -16,18 +16,18 @@ function getComputerChoice() {
 function playRound(playerSelection, computerSelection) {
     let playerSelLowCase = playerSelection.toLowerCase();
     if (playerSelLowCase === "rock" && computerSelection === "scissors") {
-        return alert(`${playerSelLowCase} beats ${computerSelection}. You win!`)
+        return alert(`You: ${playerSelLowCase}. Computer: ${computerSelection}. You win!`)
     } else if (playerSelLowCase === "paper" && computerSelection === "rock") {
-        return alert(`${playerSelLowCase} beats ${computerSelection}. You win!`)
+        return alert(`You: ${playerSelLowCase}. Computer: ${computerSelection}. You win!`)
     } else if (playerSelLowCase === "scissor" && computerSelection === "paper") {
-        return alert(`${playerSelLowCase} beats ${computerSelection}. You win!`)
+        return alert(`You: ${playerSelLowCase}. Computer: ${computerSelection}. You win!`)
     } else if (playerSelLowCase === computerSelection) {
-        return alert(`${playerSelLowCase} and ${computerSelection}. Draw!`)
+        return alert(`You: ${playerSelLowCase}. Computer: ${computerSelection}. Draw!`)
     } else {
-        return alert(`${playerSelLowCase} and ${computerSelection}. You Lose...`)
+        return alert(`You: ${playerSelLowCase}. Computer: ${computerSelection}. You Lose...`)
     }
   }
   
-  const playerSelection = "rock";
+  const playerSelection = prompt("rock, paper, or scissors?");
   const computerSelection = getComputerChoice();
   console.log(playRound(playerSelection, computerSelection));
