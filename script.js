@@ -1,15 +1,13 @@
 function getComputerChoice() {
     let randInt = Math.floor(Math.random() * 9);
     let randNumToThree = randInt % 3;
-    let rock = "rock"
-    let paper = "paper"
-    let scissors = "scissors"
+
     if (randNumToThree === 0) {
-        return rock;
+        return rock = "rock";
     } else if (randNumToThree === 1) {
-        return paper;
+        return paper = "paper";
     } else if (randNumToThree === 2) {
-        return scissors;
+        return scissors = "scissors";
     }
 }
 
@@ -58,7 +56,7 @@ function playGame() {
     } else if (playerScore === computerScore) {
         alert(`You and computer ${draw} The WHOLE game`);
     } else {
-        alert(`${lose} The WHOLE game`);
+        alert(`${lose} The WHOLE game.`);
     }
 }
 
