@@ -15,16 +15,18 @@ function getComputerChoice() {
 
 function playRound(playerSelection, computerSelection) {
     let playerSelLowCase = playerSelection.toLowerCase();
+    let singleRoundScore = `You: ${playerSelLowCase}. Computer: ${computerSelection}.`
+    
     if (playerSelLowCase === "rock" && computerSelection === "scissors") {
-        return alert(`You: ${playerSelLowCase}. Computer: ${computerSelection}. You win!`)
+        return alert(`${singleRoundScore}. You win!`)
     } else if (playerSelLowCase === "paper" && computerSelection === "rock") {
-        return alert(`You: ${playerSelLowCase}. Computer: ${computerSelection}. You win!`)
+        return alert(`${singleRoundScore}. You win!`)
     } else if (playerSelLowCase === "scissor" && computerSelection === "paper") {
-        return alert(`You: ${playerSelLowCase}. Computer: ${computerSelection}. You win!`)
+        return alert(`${singleRoundScore}. You win!`)
     } else if (playerSelLowCase === computerSelection) {
-        return alert(`You: ${playerSelLowCase}. Computer: ${computerSelection}. Draw!`)
+        return alert(`${singleRoundScore}. Draw!`)
     } else {
-        return alert(`You: ${playerSelLowCase}. Computer: ${computerSelection}. You Lose...`)
+        return alert(`${singleRoundScore}. You Lose...`)
     }
   }
   
