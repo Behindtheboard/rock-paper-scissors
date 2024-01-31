@@ -14,12 +14,15 @@ function getComputerChoice() {
 }
 
 function playGame() {
+    let playerScore = 0;
+    let computerScore = 0;
+    let win = "You win!"
+    let lose = "You lose..."
+    let draw = "Draw"
+    
     for ( let round = 0; round < 5 ; round++) {
         function playRound(playerSelection, computerSelection) {
             let playerSelLowCase = playerSelection.toLowerCase();
-            let win = "You win!"
-            let lose = "You lose..."
-            let draw = "Draw"
             
             if (playerSelLowCase === "rock" && computerSelection === "scissors") {
                 return win;
@@ -33,13 +36,30 @@ function playGame() {
                 return lose;
             }
         }
-    }
     
-    const playerSelection = prompt("rock, paper, or scissors?");
-    const computerSelection = getComputerChoice();
-    let singleRoundPair = `You: ${playerSelection}. Computer: ${computerSelection}.`
-    let roundResult = playRound(playerSelection, computerSelection);
-    alert(`${singleRoundPair} ${roundResult}`);
+        const playerSelection = prompt("rock, paper, or scissors?");
+        const computerSelection = getComputerChoice();
+        let singleRoundPair = `You: ${playerSelection}. Computer: ${computerSelection}.`
+        let roundResult = playRound(playerSelection, computerSelection);
+        alert(`${singleRoundPair} ${roundResult}`);
+        
+        if (roundResult === win) {
+            playerScore += 1;
+        } else if (roundResult === lose) {
+            computerScore += 1;
+        } else {
+        }
+
+        let gameScore = `You: ${playerScore} | Computer: ${computerScore}`;
+        alert(gameScore);
+    }
+    if (playerScore > computerScore) {
+        alert(`${win} The WHOLE game`);
+    } else if (playerScore === computerScore) {
+        alert(`You and computer ${draw} The WHOLE game`);
+    } else {
+        alert(`${lose} The WHOLE game`);
+    }
 }
 
 playGame()
