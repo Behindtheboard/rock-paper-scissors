@@ -15,13 +15,17 @@ function getComputerChoice() {
 
 function playRound(playerSelection, computerSelection) {
     let playerSelLowCase = playerSelection.toLowerCase();
-    if (playSelLowCase === "rock" && computerSelection === "paper") {
-        return alert("You win!")
-    } else if (playSelLowCase === "paper" && computerSelection === "rock") {
-        
+    if (playerSelLowCase === "rock" && computerSelection === "scissors") {
+        return alert(`${playerSelLowCase} beats ${computerSelection}. You win!`)
+    } else if (playerSelLowCase === "paper" && computerSelection === "rock") {
+        return alert(`${playerSelLowCase} beats ${computerSelection}. You win!`)
+    } else if (playerSelLowCase === "scissor" && computerSelection === "paper") {
+        return alert(`${playerSelLowCase} beats ${computerSelection}. You win!`)
+    } else if (playerSelLowCase === computerSelection) {
+        return alert(`${playerSelLowCase} and ${computerSelection}. Draw!`)
+    } else {
+        return alert(`${playerSelLowCase} and ${computerSelection}. You Lose...`)
     }
-    
-
   }
   
   const playerSelection = "rock";
