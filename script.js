@@ -14,21 +14,24 @@ function getComputerChoice() {
 }
 
 function playGame() {
-    function playRound(playerSelection, computerSelection) {
-        let playerSelLowCase = playerSelection.toLowerCase();
-        let win = "You win!"
-        let lose = "You lose..."
-        let draw = "Draw"
-        if (playerSelLowCase === "rock" && computerSelection === "scissors") {
-            return win;
-        } else if (playerSelLowCase === "paper" && computerSelection === "rock") {
-            return win;
-        } else if (playerSelLowCase === "scissor" && computerSelection === "paper") {
-            return win;
-        } else if (playerSelLowCase === computerSelection) {
-            return draw;
-        } else {
-            return lose;
+    for ( let round = 0; round < 5 ; round++) {
+        function playRound(playerSelection, computerSelection) {
+            let playerSelLowCase = playerSelection.toLowerCase();
+            let win = "You win!"
+            let lose = "You lose..."
+            let draw = "Draw"
+            
+            if (playerSelLowCase === "rock" && computerSelection === "scissors") {
+                return win;
+            } else if (playerSelLowCase === "paper" && computerSelection === "rock") {
+                return win;
+            } else if (playerSelLowCase === "scissor" && computerSelection === "paper") {
+                return win;
+            } else if (playerSelLowCase === computerSelection) {
+                return draw;
+            } else {
+                return lose;
+            }
         }
     }
     
