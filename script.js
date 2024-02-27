@@ -23,15 +23,15 @@ let draw = "Draw."
 function playRound(playerSelection, computerSelection) {  
     if (playerSelection === "rock" && computerSelection === "scissors") {
         return win;
-        } else if (playerSelection === "paper" && computerSelection === "rock") {
-            return win;
-        } else if (playerSelection === "scissor" && computerSelection === "paper") {
-            return win;
-        } else if (playerSelection === computerSelection) {
-            return draw;
-        } else {
-            return lose;
-        }
+    } else if (playerSelection === "paper" && computerSelection === "rock") {
+        return win;
+    } else if (playerSelection === "scissor" && computerSelection === "paper") {
+        return win;
+    } else if (playerSelection === computerSelection) {
+        return draw;
+    } else {
+        return lose;
+    }
 }
 
 let roundResult = '';
@@ -53,6 +53,9 @@ playerChoice.addEventListener('click', (event) => {
             roundResult = playRound(playerSelection, getComputerChoice());
             break;
         }
+        
+    let dialogBox = document.querySelector('#dialogBox');
+    dialogBox.textContent = `${roundResult}`;
     
     if (roundResult === win) {
         playerScore += 1;
@@ -60,16 +63,23 @@ playerChoice.addEventListener('click', (event) => {
         computerScore += 1;
     }
 
-    if (playerScore === 5 || computerScore === 5) {
+    if (playerScore === 5) {
+        dialogBox.textContent = 'You beat the Computer!'
+        playerScore = 0;
+        computerScore = 0;
+    } else if (computerScore === 5) {
+        dialogBox.textContent = 'Aww Computer beat you'
         playerScore = 0;
         computerScore = 0;
     }
-    
+
+
     let playerScoreDisplay = document.querySelector('#playerScore');
     playerScoreDisplay.textContent = `You: ${playerScore}`;
         
     let compScoreDisplay = document.querySelector('#computerScore');
     compScoreDisplay.textContent = `Computer: ${computerScore}`;
+
     
 });
             
