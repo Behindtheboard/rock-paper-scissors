@@ -22,10 +22,13 @@ let draw = "Draw."
 
 function playRound(playerSelection, computerSelection) {  
     if (playerSelection === "rock" && computerSelection === "scissors") {
+        win = "Your rock beats the computer's scissors!"
         return win;
     } else if (playerSelection === "paper" && computerSelection === "rock") {
+        win = "Your paper beats the computer's rock!"
         return win;
-    } else if (playerSelection === "scissor" && computerSelection === "paper") {
+    } else if (playerSelection === "scissors" && computerSelection === "paper") {
+        win = "Your scissors beats the computer's paper!"
         return win;
     } else if (playerSelection === computerSelection) {
         return draw;
@@ -35,22 +38,25 @@ function playRound(playerSelection, computerSelection) {
 }
 
 let roundResult = '';
+let playerSelection = '';
+let computerSelection = getComputerChoice();
 
 let playerChoice = document.querySelector('#playerSelection');
 playerChoice.addEventListener('click', (event) => {
+
     let target = event.target;
     switch(target.id) {
         case 'rock':
             playerSelection = 'rock';
-            roundResult = playRound(playerSelection, getComputerChoice());
+            roundResult = playRound(playerSelection, computerSelection);
             break; 
-            case 'paper':
+        case 'paper':
             playerSelection = 'paper';
-            roundResult = playRound(playerSelection, getComputerChoice());
+            roundResult = playRound(playerSelection, computerSelection);
             break;
         case 'scissors':
             playerSelection = 'scissors';
-            roundResult = playRound(playerSelection, getComputerChoice());
+            roundResult = playRound(playerSelection, computerSelection);
             break;
         }
         
@@ -80,6 +86,11 @@ playerChoice.addEventListener('click', (event) => {
     let compScoreDisplay = document.querySelector('#computerScore');
     compScoreDisplay.textContent = `Computer: ${computerScore}`;
 
+    let playerChoiceDisplay = document.querySelector('#playerChoice');
+    playerChoiceDisplay.textContent = `You picked: ${playerSelection}`;
+
+    let compChoiceDisplay = document.querySelector('#computerChoice');
+    compChoiceDisplay.textContent = `Computer picked: ${computerSelection}`;
     
 });
             
