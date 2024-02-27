@@ -20,8 +20,7 @@ let lose = "You lose..."
 let draw = "Draw."
 
 
-function playRound(playerSelection, computerSelection) {
-    
+function playRound(playerSelection, computerSelection) {  
     if (playerSelection === "rock" && computerSelection === "scissors") {
         return win;
         } else if (playerSelection === "paper" && computerSelection === "rock") {
@@ -45,7 +44,7 @@ playerChoice.addEventListener('click', (event) => {
             playerSelection = 'rock';
             roundResult = playRound(playerSelection, getComputerChoice());
             break; 
-        case 'paper':
+            case 'paper':
             playerSelection = 'paper';
             roundResult = playRound(playerSelection, getComputerChoice());
             break;
@@ -59,8 +58,11 @@ playerChoice.addEventListener('click', (event) => {
         playerScore += 1;
     } else if (roundResult === lose) {
         computerScore += 1;
-    } else {
-        
+    }
+
+    if (playerScore === 5 || computerScore === 5) {
+        playerScore = 0;
+        computerScore = 0;
     }
     
     let playerScoreDisplay = document.querySelector('#playerScore');
@@ -68,6 +70,7 @@ playerChoice.addEventListener('click', (event) => {
         
     let compScoreDisplay = document.querySelector('#computerScore');
     compScoreDisplay.textContent = `Computer: ${computerScore}`;
+    
 });
             
 
