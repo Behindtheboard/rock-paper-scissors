@@ -1,3 +1,4 @@
+
 function getComputerChoice() {
     let randInt = Math.floor(Math.random() * 9);
     let randNumToThree = randInt % 3;
@@ -11,38 +12,18 @@ function getComputerChoice() {
     }
 }
 
-let playerSelection = '';
+let playerScore = 0;
+let computerScore = 0;
 
-let fullGame = document.querySelector('#choices');
-fullGame.addEventListener('click', (event) => {
-    let target = event.target;
-    switch(target.id) {
-        case 'rock':
-            playerSelection = 'rock';
-
-            break; 
-        case 'paper':
-            playerSelection = 'paper';
-
-            break;
-        case 'scissors':
-            playerSelection = 'scissors';
-
-            break;
-    }
-});
+let win = "You win!"
+let lose = "You lose..."
+let draw = "Draw."
 
 
-function playGame() {
-    let win = "You win!";
-    let lose = "You lose...";
-    let draw = "Draw.";
+function playRound(playerSelection, computerSelection) {
     
-
-    function playRound(playerSelection, computerSelection) {
-                    
-        if (playerSelection === "rock" && computerSelection === "scissors") {
-            return win;
+    if (playerSelection === "rock" && computerSelection === "scissors") {
+        return win;
         } else if (playerSelection === "paper" && computerSelection === "rock") {
             return win;
         } else if (playerSelection === "scissor" && computerSelection === "paper") {
@@ -52,32 +33,43 @@ function playGame() {
         } else {
             return lose;
         }
-    }
-    
-    let playerName = 'you';
-    let computerSelection = getComputerChoice();
-    let singleRoundPair = `${playerName}: ${playerSelection}. Computer: ${computerSelection}.`;
-    
-    let roundResult = playRound(playerSelection, computerSelection);
+}
+
+let roundResult = '';
+
+let playerChoice = document.querySelector('#playerSelection');
+playerChoice.addEventListener('click', (event) => {
+    let target = event.target;
+    switch(target.id) {
+        case 'rock':
+            playerSelection = 'rock';
+            roundResult = playRound(playerSelection, getComputerChoice());
+            break; 
+        case 'paper':
+            playerSelection = 'paper';
+            roundResult = playRound(playerSelection, getComputerChoice());
+            break;
+        case 'scissors':
+            playerSelection = 'scissors';
+            roundResult = playRound(playerSelection, getComputerChoice());
+            break;
+        }
     
     if (roundResult === win) {
         playerScore += 1;
     } else if (roundResult === lose) {
         computerScore += 1;
     } else {
+        
     }
     
-    let gameScore = `${playerName}: ${playerScore} | Computer: ${computerScore}`;
-    
-    alert(`${singleRoundPair} ${roundResult}\n\nScore: ${gameScore}`);
-    
-    if (playerScore > computerScore) {
-        alert(`${win} The WHOLE game`);
-    } else if (playerScore === computerScore) {
-        alert(`You and computer ${draw} The WHOLE game`);
-    } else {
-        alert(`${lose} The WHOLE game.`);
-    }
-    
-}
-    
+    let playerScoreDisplay = document.querySelector('#playerScore');
+    playerScoreDisplay.textContent = `You: ${playerScore}`;
+        
+    let compScoreDisplay = document.querySelector('#computerScore');
+    compScoreDisplay.textContent = `Computer: ${computerScore}`;
+});
+            
+
+
+
