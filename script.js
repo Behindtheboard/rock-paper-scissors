@@ -14,21 +14,20 @@ function getComputerChoice() {
 
 let playerScore = 0;
 let computerScore = 0;
-
+let playerSelection = '';
+let computerSelection = '';
+let roundResult = '';
 let win = "You win!"
 let lose = "You lose..."
 let draw = "Draw."
 
 
-function playRound(playerSelection, computerSelection) {  
+function playRound(playerSelection, computerSelection) {        
     if (playerSelection === "rock" && computerSelection === "scissors") {
-        win = "Your rock beats the computer's scissors!"
         return win;
     } else if (playerSelection === "paper" && computerSelection === "rock") {
-        win = "Your paper beats the computer's rock!"
         return win;
-    } else if (playerSelection === "scissors" && computerSelection === "paper") {
-        win = "Your scissors beats the computer's paper!"
+    } else if (playerSelection === "scissor" && computerSelection === "paper") {
         return win;
     } else if (playerSelection === computerSelection) {
         return draw;
@@ -37,63 +36,100 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
-let roundResult = '';
-let playerSelection = '';
-let computerSelection = getComputerChoice();
+let container = document.querySelector('#container');
+let start = document.querySelector('#start');
+const rpsButtons = document.querySelector('#rpsButtons');
+start.addEventListener('click', () => {
+    container.removeChild(start);
 
-let playerChoice = document.querySelector('#playerSelection');
-playerChoice.addEventListener('click', (event) => {
+    const rockButton = document.createElement('button');
+    rockButton.setAttribute('id', 'rockButton');
+    rockButton.textContent = 'Rock';
+    rpsButtons.appendChild(rockButton);
 
-    let target = event.target;
-    switch(target.id) {
-        case 'rock':
-            playerSelection = 'rock';
-            roundResult = playRound(playerSelection, computerSelection);
-            break; 
-        case 'paper':
-            playerSelection = 'paper';
-            roundResult = playRound(playerSelection, computerSelection);
-            break;
-        case 'scissors':
-            playerSelection = 'scissors';
-            roundResult = playRound(playerSelection, computerSelection);
-            break;
+    const paperButton = document.createElement('button');
+    paperButton.setAttribute('id', 'paperButton');
+    paperButton.textContent = 'Paper';
+    rpsButtons.appendChild(paperButton);
+
+    const scissorsButton = document.createElement('button');
+    scissorsButton.setAttribute('id', 'scissorsButton');
+    scissorsButton.textContent = 'Scissors';
+    rpsButtons.appendChild(scissorsButton);
+   
+    rpsButtons.addEventListener('click', (event) => {
+        let target = event.target;
+        switch(target.id) {
+            case 'rockButton':
+                playerSelection = 'rock';
+                computerSelection = getComputerChoice();
+                roundResult = playRound(playerSelection, computerSelection);
+                break; 
+            case 'paperButton':
+                playerSelection = 'paper';
+                computerSelection = getComputerChoice();
+                roundResult = playRound(playerSelection, computerSelection);
+                break;
+            case 'scissorsButton':
+                playerSelection = 'scissors';
+                computerSelection = getComputerChoice();
+                roundResult = playRound(playerSelection, computerSelection);
+                break;
         }
+        console.log(roundResult);
         
-    let dialogBox = document.querySelector('#dialogBox');
-    dialogBox.textContent = `${roundResult}`;
-    
-    if (roundResult === win) {
-        playerScore += 1;
-    } else if (roundResult === lose) {
-        computerScore += 1;
-    }
+        if (roundResult === "You win!") {
+            playerScore += 1;
+        } else if (roundResult === "You lose...") {
+            computerScore += 1;
+        }
 
-    if (playerScore === 5) {
-        dialogBox.textContent = 'You beat the Computer!'
-        playerScore = 0;
-        computerScore = 0;
-    } else if (computerScore === 5) {
-        dialogBox.textContent = 'Aww Computer beat you'
-        playerScore = 0;
-        computerScore = 0;
-    }
+        let dialogBox = document.querySelector('#dialogBox');
+        dialogBox.textContent = `${roundResult}`;
 
-
-    let playerScoreDisplay = document.querySelector('#playerScore');
-    playerScoreDisplay.textContent = `You: ${playerScore}`;
-        
-    let compScoreDisplay = document.querySelector('#computerScore');
-    compScoreDisplay.textContent = `Computer: ${computerScore}`;
-
-    let playerChoiceDisplay = document.querySelector('#playerChoice');
-    playerChoiceDisplay.textContent = `You picked: ${playerSelection}`;
-
-    let compChoiceDisplay = document.querySelector('#computerChoice');
-    compChoiceDisplay.textContent = `Computer picked: ${computerSelection}`;
-    
-});
+        let playerScoreDisplay = document.querySelector('#playerScoreDisplay');
+        playerScoreDisplay.textContent = `You: ${playerScore}`;
             
+        let compScoreDisplay = document.querySelector('#computerScoreDisplay');
+        compScoreDisplay.textContent = `Computer: ${computerScore}`;
+
+        let playerChoiceDisplay = document.querySelector('#playerChoiceDisplay');
+        playerChoiceDisplay.textContent = `You: ${playerSelection}`;
+
+        let compChoiceDisplay = document.querySelector('#compChoiceDisplay');
+        compChoiceDisplay.textContent = `Computer: ${computerSelection}`;
+        
+        let choiceDisplay = document.querySelector('#choiceDisplay');
+
+        function reset() {
+            rpsButtons.removeChild(rockButton);
+            rpsButtons.removeChild(paperButton);
+            rpsButtons.removeChild(scissorsButton);
+            choiceDisplay.removeChild(playerChoiceDisplay);
+            choiceDisplay.removeChild(compChoiceDisplay);
+            
+            let playAgainBtn = document.createElement('button');
+            playAgainBtn.setAttribute('id', 'playAgainBtn');
+            playAgainBtn.textContent = 'Play Again?';
+            rpsButtons.appendChild(playAgainBtn);
+            
+            playAgainBtn.addEventListener('click', () => {
+                location.reload();
+            });
+        }
+
+        if (playerScore === 5) {
+            reset();
+            dialogBox.textContent = 'You beat the Computer!';
+        } else if (computerScore === 5) {
+            reset();
+            dialogBox.textContent = 'Aww you lost to the computer';
+        }
+
+    });    
+});
+
+
 
 
 

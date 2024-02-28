@@ -4,29 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock Paper Scissors</title>
-    
+
     <link rel="stylesheet" href="./styles.css">
     <script src="./script.js" defer></script>
 </head>
 <body>
-    <h1>Rock, Paper, Scissors?</h1>
-    <h2>First to five?</h2>
-    <div id="scoreDisplay">
-        <div id="playerScore">You:</div>
-        <div id="computerScore">Computer:</div>
-    </div>
+    <div id="container">
+        <h1>Rock, Paper, Scissors</h1>
+        <h2>First to five?</h2>
+        <button type="button" id="start">Let's do it!</button>
 
-    <div id="dialogBox"></div>
-    
-    <div id="choiceDisplay">
-        <div id="playerChoice">You picked:</div>
-        <div id="computerChoice">Computer picked:</div>
-    </div>
+        <div id="scoreDisplay">
+            <div id="playerScoreDisplay"></div>
+            <div id="computerScoreDisplay"></div>
+        </div>
 
-    <div id="playerSelection">    
-        <button type="button" id="rock">Rock</button>
-        <button type="button" id="paper">Paper</button>
-        <button type="button" id="scissors">Scissors</button>
+        <div id="dialogBox"></div>
+        
+        <div id="choiceDisplay">
+            <div id="playerChoiceDisplay"></div>
+            <div id="compChoiceDisplay"></div>
+        </div>
+        
+        <div id="rpsButtons">    
+        </div>
     </div>
 </body>
 </html>

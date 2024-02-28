@@ -1,0 +1,41 @@
+body {
+    margin: auto;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#rpsButtons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+#scoreDisplay {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+#choiceDisplay {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#playChoiceDisplay {
+    margin-right: 10px;
+}
+
+#compChoiceDisplay {
+    margin-left: 10px;
+}
