@@ -13,16 +13,36 @@ body {
     justify-content: space-between;
 }
 
+#dialogBox {
+    margin: 20px;
+}
+
 #rpsButtons {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    margin-top: 20px;
+}
+
+button {
+    margin-left: 20px;
+    margin-right: 20px;
+    background-color: beige;
+    border-radius: 20%;
+    padding: 10px;
 }
 
 #scoreDisplay {
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+}
+
+#playerScoreDisplay {
+    margin-right: 20px;
+}
+
+#computerScoreDisplay {
+    margin-right: 20px;
 }
 
 #choiceDisplay {
@@ -33,9 +53,9 @@ body {
 }
 
 #playChoiceDisplay {
-    margin-right: 10px;
+    margin-right: 20px;
 }
 
 #compChoiceDisplay {
-    margin-left: 10px;
+    margin-left: 20px;
 }
